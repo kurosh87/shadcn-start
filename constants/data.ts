@@ -1,4 +1,5 @@
 import { NavItem } from '@/types';
+import { Icons } from '@/components/icons';
 
 export type User = {
   id: number;
@@ -126,39 +127,121 @@ export const navItems: NavItem[] = [
     title: 'Dashboard',
     url: '/dashboard/overview',
     icon: 'dashboard',
-    isActive: false,
-    items: [] // Empty array as there are no child items for Dashboard
+    isActive: false
+  },
+  {
+    title: 'Explore',
+    url: '#',
+    icon: 'compass',
+    isActive: true,
+    items: [
+      {
+        title: 'All Destinations',
+        url: '/dashboard/explore',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Africa',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Europe',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Asia',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'North America',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'South America',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Antarctica',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      }
+    ]
+  },
+  {
+    title: 'My Trips',
+    url: '#',
+    icon: 'user',
+    isActive: true,
+    items: [
+      {
+        title: 'All Trips',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Upcoming Trips',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Current Trip',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      },
+      {
+        title: 'Past Trips',
+        url: '/',
+        icon: 'compass',
+        isActive: false
+      }
+    ]
   },
   {
     title: 'Employee',
     url: '/dashboard/employee',
     icon: 'user',
     isActive: false,
-    items: [] // No child items
+    items: []
   },
   {
     title: 'Product',
     url: '/dashboard/product',
     icon: 'product',
     isActive: false,
-    items: [] // No child items
+    items: []
   },
   {
     title: 'Account',
-    url: '#', // Placeholder as there is no direct link for the parent
+    url: '#',
     icon: 'billing',
     isActive: true,
-
     items: [
       {
         title: 'Profile',
         url: '/dashboard/profile',
-        icon: 'userPen'
+        icon: 'userPen',
+        isActive: false
       },
       {
         title: 'Login',
         url: '/',
-        icon: 'login'
+        icon: 'login',
+        isActive: false
       }
     ]
   },
@@ -167,6 +250,6 @@ export const navItems: NavItem[] = [
     url: '/dashboard/kanban',
     icon: 'kanban',
     isActive: false,
-    items: [] // No child items
+    items: []
   }
 ];

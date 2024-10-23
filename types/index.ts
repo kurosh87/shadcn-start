@@ -1,16 +1,12 @@
 import { Icons } from '@/components/icons';
 
-export interface NavItem {
+export type NavItem = {
   title: string;
   url: string;
-  disabled?: boolean;
-  external?: boolean;
-  icon?: keyof typeof Icons;
-  label?: string;
-  description?: string;
-  isActive?: boolean;
-  items?: NavItem[];
-}
+  icon: keyof typeof Icons; // This ensures the icon is a valid key of the Icons object
+  isActive: boolean;
+  items?: NavItem[]; // Make items optional
+};
 
 export interface NavItemWithChildren extends NavItem {
   items: NavItemWithChildren[];

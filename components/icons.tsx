@@ -6,6 +6,7 @@ import {
   ChevronRight,
   CircuitBoardIcon,
   Command,
+  Compass,
   CreditCard,
   File,
   FileText,
@@ -82,5 +83,6 @@ export const Icons = {
     </svg>
   ),
   twitter: Twitter,
-  check: Check
+  check: Check,
+  compass: Compass
 };

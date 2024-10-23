@@ -32,7 +32,7 @@ export default async function Page({ searchParams }: pageProps) {
       <div className="space-y-4">
         <div className="flex items-start justify-between">
           <Heading
-            title="Products"
+            title="Explore"
             description="Manage products (Server side table functionalities.)"
           />
           <Link

@@ -40,6 +40,7 @@ import {
   ChevronRight,
   ChevronsUpDown,
   CreditCard,
+  Compass,
   GalleryVerticalEnd,
   LogOut
 } from 'lucide-react';
@@ -52,11 +53,12 @@ import { Icons } from '../icons';
 import SearchInput from '../search-input';
 import ThemeToggle from './ThemeToggle/theme-toggle';
 import { UserNav } from './user-nav';
+import { NavItem } from '@/types';
 
 export const company = {
-  name: 'Acme Inc',
-  logo: GalleryVerticalEnd,
-  plan: 'Enterprise'
+  name: 'Intrepid.app',
+  logo: Compass,
+  plan: 'Premium Traveller'
 };
 
 export default function AppSidebar({
@@ -94,7 +96,7 @@ export default function AppSidebar({
           <SidebarGroup>
             <SidebarGroupLabel>Overview</SidebarGroupLabel>
             <SidebarMenu>
-              {navItems.map((item) => {
+              {navItems.map((item: NavItem) => {
                 const Icon = item.icon ? Icons[item.icon] : Icons.logo;
                 return item?.items && item?.items?.length > 0 ? (
                   <Collapsible
