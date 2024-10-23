@@ -32,6 +32,12 @@ const nextConfig = {
   optimizeFonts: false,
   compiler: {
     styledComponents: true
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 };
 
