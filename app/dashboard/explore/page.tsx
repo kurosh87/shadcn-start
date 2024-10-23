@@ -48,6 +48,7 @@ export default function ExplorePage() {
         setData(data || []);
       } catch (err) {
         setError('Failed to fetch data');
+        // eslint-disable-next-line no-console
         console.error('Error fetching data:', err);
       } finally {
         setIsLoading(false);
