@@ -168,5 +168,10 @@ export const navItems: NavItem[] = [
     icon: 'kanban',
     isActive: false,
     items: [] // No child items
+  },
+  {
+    title: 'Explore',
+    url: '/dashboard/explore',
+    icon: 'map'
   }
 ];
