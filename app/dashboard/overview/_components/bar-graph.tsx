@@ -1,7 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  ResponsiveContainer
+} from 'recharts';
 
 import {
   Card,
@@ -17,124 +31,174 @@ import {
   ChartTooltipContent
 } from '@/components/ui/chart';
 
-export const description = 'An interactive bar chart';
-
 const chartData = [
-  { date: '2024-04-01', desktop: 222, mobile: 150 },
-  { date: '2024-04-02', desktop: 97, mobile: 180 },
-  { date: '2024-04-03', desktop: 167, mobile: 120 },
-  { date: '2024-04-04', desktop: 242, mobile: 260 },
-  { date: '2024-04-05', desktop: 373, mobile: 290 },
-  { date: '2024-04-06', desktop: 301, mobile: 340 },
-  { date: '2024-04-07', desktop: 245, mobile: 180 },
-  { date: '2024-04-08', desktop: 409, mobile: 320 },
-  { date: '2024-04-09', desktop: 59, mobile: 110 },
-  { date: '2024-04-10', desktop: 261, mobile: 190 },
-  { date: '2024-04-11', desktop: 327, mobile: 350 },
-  { date: '2024-04-12', desktop: 292, mobile: 210 },
-  { date: '2024-04-13', desktop: 342, mobile: 380 },
-  { date: '2024-04-14', desktop: 137, mobile: 220 },
-  { date: '2024-04-15', desktop: 120, mobile: 170 },
-  { date: '2024-04-16', desktop: 138, mobile: 190 },
-  { date: '2024-04-17', desktop: 446, mobile: 360 },
-  { date: '2024-04-18', desktop: 364, mobile: 410 },
-  { date: '2024-04-19', desktop: 243, mobile: 180 },
-  { date: '2024-04-20', desktop: 89, mobile: 150 },
-  { date: '2024-04-21', desktop: 137, mobile: 200 },
-  { date: '2024-04-22', desktop: 224, mobile: 170 },
-  { date: '2024-04-23', desktop: 138, mobile: 230 },
-  { date: '2024-04-24', desktop: 387, mobile: 290 },
-  { date: '2024-04-25', desktop: 215, mobile: 250 },
-  { date: '2024-04-26', desktop: 75, mobile: 130 },
-  { date: '2024-04-27', desktop: 383, mobile: 420 },
-  { date: '2024-04-28', desktop: 122, mobile: 180 },
-  { date: '2024-04-29', desktop: 315, mobile: 240 },
-  { date: '2024-04-30', desktop: 454, mobile: 380 },
-  { date: '2024-05-01', desktop: 165, mobile: 220 },
-  { date: '2024-05-02', desktop: 293, mobile: 310 },
-  { date: '2024-05-03', desktop: 247, mobile: 190 },
-  { date: '2024-05-04', desktop: 385, mobile: 420 },
-  { date: '2024-05-05', desktop: 481, mobile: 390 },
-  { date: '2024-05-06', desktop: 498, mobile: 520 },
-  { date: '2024-05-07', desktop: 388, mobile: 300 },
-  { date: '2024-05-08', desktop: 149, mobile: 210 },
-  { date: '2024-05-09', desktop: 227, mobile: 180 },
-  { date: '2024-05-10', desktop: 293, mobile: 330 },
-  { date: '2024-05-11', desktop: 335, mobile: 270 },
-  { date: '2024-05-12', desktop: 197, mobile: 240 },
-  { date: '2024-05-13', desktop: 197, mobile: 160 },
-  { date: '2024-05-14', desktop: 448, mobile: 490 },
-  { date: '2024-05-15', desktop: 473, mobile: 380 },
-  { date: '2024-05-16', desktop: 338, mobile: 400 },
-  { date: '2024-05-17', desktop: 499, mobile: 420 },
-  { date: '2024-05-18', desktop: 315, mobile: 350 },
-  { date: '2024-05-19', desktop: 235, mobile: 180 },
-  { date: '2024-05-20', desktop: 177, mobile: 230 },
-  { date: '2024-05-21', desktop: 82, mobile: 140 },
-  { date: '2024-05-22', desktop: 81, mobile: 120 },
-  { date: '2024-05-23', desktop: 252, mobile: 290 },
-  { date: '2024-05-24', desktop: 294, mobile: 220 },
-  { date: '2024-05-25', desktop: 201, mobile: 250 },
-  { date: '2024-05-26', desktop: 213, mobile: 170 },
-  { date: '2024-05-27', desktop: 420, mobile: 460 },
-  { date: '2024-05-28', desktop: 233, mobile: 190 },
-  { date: '2024-05-29', desktop: 78, mobile: 130 },
-  { date: '2024-05-30', desktop: 340, mobile: 280 },
-  { date: '2024-05-31', desktop: 178, mobile: 230 },
-  { date: '2024-06-01', desktop: 178, mobile: 200 },
-  { date: '2024-06-02', desktop: 470, mobile: 410 },
-  { date: '2024-06-03', desktop: 103, mobile: 160 },
-  { date: '2024-06-04', desktop: 439, mobile: 380 },
-  { date: '2024-06-05', desktop: 88, mobile: 140 },
-  { date: '2024-06-06', desktop: 294, mobile: 250 },
-  { date: '2024-06-07', desktop: 323, mobile: 370 },
-  { date: '2024-06-08', desktop: 385, mobile: 320 },
-  { date: '2024-06-09', desktop: 438, mobile: 480 },
-  { date: '2024-06-10', desktop: 155, mobile: 200 },
-  { date: '2024-06-11', desktop: 92, mobile: 150 },
-  { date: '2024-06-12', desktop: 492, mobile: 420 },
-  { date: '2024-06-13', desktop: 81, mobile: 130 },
-  { date: '2024-06-14', desktop: 426, mobile: 380 },
-  { date: '2024-06-15', desktop: 307, mobile: 350 },
-  { date: '2024-06-16', desktop: 371, mobile: 310 },
-  { date: '2024-06-17', desktop: 475, mobile: 520 },
-  { date: '2024-06-18', desktop: 107, mobile: 170 },
-  { date: '2024-06-19', desktop: 341, mobile: 290 },
-  { date: '2024-06-20', desktop: 408, mobile: 450 },
-  { date: '2024-06-21', desktop: 169, mobile: 210 },
-  { date: '2024-06-22', desktop: 317, mobile: 270 },
-  { date: '2024-06-23', desktop: 480, mobile: 530 },
-  { date: '2024-06-24', desktop: 132, mobile: 180 },
-  { date: '2024-06-25', desktop: 141, mobile: 190 },
-  { date: '2024-06-26', desktop: 434, mobile: 380 },
-  { date: '2024-06-27', desktop: 448, mobile: 490 },
-  { date: '2024-06-28', desktop: 149, mobile: 200 },
-  { date: '2024-06-29', desktop: 103, mobile: 160 },
-  { date: '2024-06-30', desktop: 446, mobile: 400 }
+  { name: '3dEYE', gpu: 55, memory: 48, compute: 52 },
+  { name: '70B F-tune', gpu: 65, memory: 55, compute: 58 },
+  { name: 'GrubHub Project', gpu: 52, memory: 45, compute: 48 },
+  { name: 'Lightspeed_Demo', gpu: 58, memory: 50, compute: 54 },
+  { name: 'LLM_Inference', gpu: 60, memory: 52, compute: 56 },
+  { name: 'Nebula_Endpoint', gpu: 54, memory: 47, compute: 50 },
+  { name: 'RadiumDeploy', gpu: 56, memory: 49, compute: 52 }
 ];
 
-const chartConfig = {
-  views: {
-    label: 'Page Views'
+const chartConfig: ChartConfig = {
+  gpu: {
+    label: 'Computation',
+    color: 'hsl(var(--chart-1))',
+    theme: {
+      backgroundColor: 'hsl(var(--chart-1))',
+      borderColor: 'hsl(var(--chart-1))'
+    }
   },
-  desktop: {
-    label: 'Desktop',
-    color: 'hsl(var(--chart-1))'
+  memory: {
+    label: 'Storage',
+    color: 'hsl(var(--chart-2))',
+    theme: {
+      backgroundColor: 'hsl(var(--chart-2))',
+      borderColor: 'hsl(var(--chart-2))'
+    }
   },
-  mobile: {
-    label: 'Mobile',
-    color: 'hsl(var(--chart-2))'
+  compute: {
+    label: 'Traffic',
+    color: 'hsl(var(--chart-3))',
+    theme: {
+      backgroundColor: 'hsl(var(--chart-3))',
+      borderColor: 'hsl(var(--chart-3))'
+    }
   }
-} satisfies ChartConfig;
+};
+
+const miniChartData = {
+  cpu: [
+    { name: 'GPU', dailyAvg: 0, current: 0 },
+    { name: 'CPU', dailyAvg: 7, current: 7 },
+    { name: 'MEMORY', dailyAvg: 57.85, current: 57.85 }
+  ],
+  gpu: [
+    { name: 'GPU', dailyAvg: 0, current: 0 },
+    { name: 'CPU', dailyAvg: 7, current: 7 },
+    { name: 'MEMORY', dailyAvg: 57.85, current: 57.85 }
+  ],
+  memory: [
+    { name: 'GPU', dailyAvg: 0, current: 0 },
+    { name: 'CPU', dailyAvg: 7, current: 7 },
+    { name: 'MEMORY', dailyAvg: 57.85, current: 57.85 }
+  ]
+};
+
+const miniBarData = {
+  cpu: [
+    { name: 'Daily', value: 7, fill: 'rgb(34, 211, 238)' },
+    { name: 'Current', value: 7.2, fill: 'rgb(34, 197, 94)' }
+  ],
+  gpu: [
+    { name: 'Daily', value: 85, fill: 'rgb(34, 211, 238)' },
+    { name: 'Current', value: 82, fill: 'rgb(34, 197, 94)' }
+  ],
+  memory: [
+    { name: 'Daily', value: 57.85, fill: 'rgb(34, 211, 238)' },
+    { name: 'Current', value: 58.2, fill: 'rgb(34, 197, 94)' }
+  ]
+};
+
+const storageData = [
+  { name: '3dEYE', value: 450, color: '#60A5FA' },
+  { name: '70B F-tune', value: 850, color: '#8B5CF6' },
+  { name: 'GrubHub Project', value: 120, color: '#34D399' },
+  { name: 'LLM_Inference', value: 380, color: '#F472B6' },
+  { name: 'Lightspeed_Demonstration', value: 180, color: '#FBBF24' },
+  { name: 'Nebula_Endpoint', value: 220, color: '#6366F1' },
+  { name: 'Nebula_Inference', value: 90, color: '#EC4899' },
+  { name: 'RadiumDeploy', value: 60, color: '#10B981' }
+];
+
+const storageTrendData = [
+  { name: 'Jan', usage: 1.8 },
+  { name: 'Feb', usage: 1.9 },
+  { name: 'Mar', usage: 2.0 },
+  { name: 'Apr', usage: 2.1 },
+  { name: 'May', usage: 2.2 },
+  { name: 'Jun', usage: 2.29 }
+];
+
+const trafficTrendData = [
+  {
+    name: 'Jan',
+    '3dEYE': 1.4,
+    '70B F-tune': 2.5,
+    'GrubHub Project': 0.7,
+    LLM_Inference: 1.9,
+    Lightspeed_Demonstration: 0.9,
+    Nebula_Endpoint: 1.2,
+    Nebula_Inference: 0.6,
+    RadiumDeploy: 0.4
+  },
+  {
+    name: 'Feb',
+    '3dEYE': 1.6,
+    '70B F-tune': 2.8,
+    'GrubHub Project': 1.2,
+    LLM_Inference: 1.7,
+    Lightspeed_Demonstration: 1.3,
+    Nebula_Endpoint: 1.4,
+    Nebula_Inference: 0.8,
+    RadiumDeploy: 0.5
+  },
+  {
+    name: 'Mar',
+    '3dEYE': 1.5,
+    '70B F-tune': 3.4,
+    'GrubHub Project': 1.0,
+    LLM_Inference: 2.2,
+    Lightspeed_Demonstration: 1.1,
+    Nebula_Endpoint: 1.6,
+    Nebula_Inference: 0.9,
+    RadiumDeploy: 0.7
+  },
+  {
+    name: 'Apr',
+    '3dEYE': 1.8,
+    '70B F-tune': 3.2,
+    'GrubHub Project': 1.4,
+    LLM_Inference: 2.4,
+    Lightspeed_Demonstration: 1.5,
+    Nebula_Endpoint: 1.9,
+    Nebula_Inference: 1.1,
+    RadiumDeploy: 0.8
+  },
+  {
+    name: 'May',
+    '3dEYE': 1.7,
+    '70B F-tune': 3.7,
+    'GrubHub Project': 1.3,
+    LLM_Inference: 2.6,
+    Lightspeed_Demonstration: 1.4,
+    Nebula_Endpoint: 1.7,
+    Nebula_Inference: 1.2,
+    RadiumDeploy: 0.9
+  },
+  {
+    name: 'Jun',
+    '3dEYE': 2.1,
+    '70B F-tune': 3.9,
+    'GrubHub Project': 1.6,
+    LLM_Inference: 2.8,
+    Lightspeed_Demonstration: 1.7,
+    Nebula_Endpoint: 2.0,
+    Nebula_Inference: 1.3,
+    RadiumDeploy: 1.1
+  }
+];
 
 export function BarGraph() {
-  const [activeChart, setActiveChart] =
-    React.useState<keyof typeof chartConfig>('desktop');
+  const [activeMetric, setActiveMetric] =
+    React.useState<keyof typeof chartConfig>('gpu');
 
   const total = React.useMemo(
     () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0)
+      gpu: '45.2',
+      memory: '2.35',
+      compute: '12.2'
     }),
     []
   );
@@ -143,27 +207,32 @@ export function BarGraph() {
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Bar Chart - Interactive</CardTitle>
+          <CardTitle>Global Project Resource Usage</CardTitle>
           <CardDescription>
-            Showing total visitors for the last 3 months
+            Combined GPU, Memory, and Global Compute utilization
           </CardDescription>
         </div>
         <div className="flex">
-          {['desktop', 'mobile'].map((key) => {
-            const chart = key as keyof typeof chartConfig;
+          {['gpu', 'memory', 'compute'].map((key) => {
+            const metric = key as keyof typeof chartConfig;
             return (
               <button
-                key={chart}
-                data-active={activeChart === chart}
+                key={metric}
+                data-active={activeMetric === metric}
                 className="relative flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
-                onClick={() => setActiveChart(chart)}
+                onClick={() => setActiveMetric(metric)}
               >
                 <span className="text-xs text-muted-foreground">
-                  {chartConfig[chart].label}
+                  {chartConfig[metric].label}
                 </span>
-                <span className="text-lg font-bold leading-none sm:text-3xl">
-                  {total[key as keyof typeof total].toLocaleString()}
-                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-lg font-bold leading-none sm:text-3xl">
+                    {total[metric]}
+                  </span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {metric === 'gpu' ? 'vCPUs' : 'TB'}
+                  </span>
+                </div>
               </button>
             );
           })}
@@ -174,46 +243,351 @@ export function BarGraph() {
           config={chartConfig}
           className="aspect-auto h-[280px] w-full"
         >
-          <BarChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
-              tickFormatter={(value) => {
-                const date = new Date(value);
-                return date.toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric'
-                });
-              }}
-            />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  className="w-[150px]"
-                  nameKey="views"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric'
-                    });
-                  }}
-                />
-              }
-            />
-            <Bar dataKey={activeChart} fill={`var(--color-${activeChart})`} />
-          </BarChart>
+          {activeMetric === 'gpu' ? (
+            <div className="grid h-full grid-cols-3 gap-6 p-6">
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-6">
+                <div className="space-y-2">
+                  <span className="text-lg font-medium">CPU</span>
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-3xl font-bold">7%</span>
+                    <span className="text-sm text-muted-foreground">
+                      utilization
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-2 h-[60px] w-full">
+                  <BarChart
+                    width={200}
+                    height={60}
+                    data={miniBarData.cpu}
+                    margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
+                    barGap={2}
+                  >
+                    <YAxis
+                      domain={[0, 100]}
+                      ticks={[0, 50, 100]}
+                      tick={{ fontSize: 10 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <Bar
+                      dataKey="value"
+                      fill={(entry) => entry.fill}
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
+                </div>
+                <div className="mt-2 flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,211,238)]" />
+                    <span>Daily average</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,197,94)]" />
+                    <span>Current Usage</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-6">
+                <div className="space-y-2">
+                  <span className="text-lg font-medium">GPU</span>
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-3xl font-bold">82%</span>
+                    <span className="text-sm text-muted-foreground">
+                      utilization
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-2 h-[60px] w-full">
+                  <BarChart
+                    width={200}
+                    height={60}
+                    data={miniBarData.gpu}
+                    margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
+                    barGap={2}
+                  >
+                    <YAxis
+                      domain={[0, 100]}
+                      ticks={[0, 50, 100]}
+                      tick={{ fontSize: 10 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <Bar
+                      dataKey="value"
+                      fill={(entry) => entry.fill}
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
+                </div>
+                <div className="mt-2 flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,211,238)]" />
+                    <span>Daily average</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,197,94)]" />
+                    <span>Current Usage</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-6">
+                <div className="space-y-2">
+                  <span className="text-lg font-medium">Memory</span>
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-3xl font-bold">58.2%</span>
+                    <span className="text-sm text-muted-foreground">
+                      utilization
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-2 h-[60px] w-full">
+                  <BarChart
+                    width={200}
+                    height={60}
+                    data={miniBarData.memory}
+                    margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
+                    barGap={2}
+                  >
+                    <YAxis
+                      domain={[0, 100]}
+                      ticks={[0, 50, 100]}
+                      tick={{ fontSize: 10 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <Bar
+                      dataKey="value"
+                      fill={(entry) => entry.fill}
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
+                </div>
+                <div className="mt-2 flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,211,238)]" />
+                    <span>Daily average</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[rgb(34,197,94)]" />
+                    <span>Current Usage</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : activeMetric === 'memory' ? (
+            <div className="grid h-full grid-cols-3 gap-3 p-3">
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-4">
+                <div className="space-y-1">
+                  <span className="text-lg font-medium">
+                    Storage Distribution
+                  </span>
+                  <p className="text-xs text-muted-foreground">
+                    Total storage allocation by project
+                  </p>
+                </div>
+                <div className="relative flex flex-1 items-center justify-center">
+                  <PieChart width={180} height={180}>
+                    <Pie
+                      data={storageData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      innerRadius={45}
+                      outerRadius={70}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {storageData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-lg font-bold">2.29</div>
+                      <div className="text-xs text-muted-foreground">
+                        TB Total
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-4">
+                <div className="space-y-1">
+                  <span className="text-lg font-medium">Project Breakdown</span>
+                  <p className="text-xs text-muted-foreground">
+                    Storage usage by project
+                  </p>
+                </div>
+                <div className="flex-1 overflow-auto">
+                  <div className="flex flex-col gap-1 text-xs">
+                    {storageData.map((entry, index) => (
+                      <div key={index} className="flex items-center gap-2">
+                        <div
+                          className="h-2 w-2 rounded-full"
+                          style={{ backgroundColor: entry.color }}
+                        />
+                        <span className="flex-1 truncate">{entry.name}</span>
+                        <span className="font-medium tabular-nums">
+                          {entry.value} GB
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex h-full flex-col justify-between rounded-lg border border-border bg-muted/50 p-4">
+                <div className="space-y-1">
+                  <span className="text-lg font-medium">Growth Trend</span>
+                  <p className="text-xs text-muted-foreground">
+                    Last 6 months usage in TB
+                  </p>
+                </div>
+                <div className="flex-1">
+                  <AreaChart
+                    width={200}
+                    height={180}
+                    data={storageTrendData}
+                    margin={{ top: 5, right: 5, left: 5, bottom: 0 }}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="storageGradient"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="5%"
+                          stopColor="#8B5CF6"
+                          stopOpacity={0.4}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#8B5CF6"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
+                    </defs>
+                    <XAxis
+                      dataKey="name"
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontSize: 10 }}
+                      dy={5}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="usage"
+                      stroke="#8B5CF6"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#storageGradient)"
+                      dot={{ fill: '#8B5CF6', r: 3 }}
+                      activeDot={{ r: 5, strokeWidth: 0 }}
+                    />
+                  </AreaChart>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="h-full w-full">
+              <div className="flex h-full flex-col rounded-lg border border-border bg-muted/50">
+                <div className="space-y-0.5 border-b p-3">
+                  <span className="text-base font-medium">
+                    Global Traffic Distribution
+                  </span>
+                  <p className="text-xs text-muted-foreground">
+                    Traffic usage by project over time (TB)
+                  </p>
+                </div>
+                <div className="min-h-[180px] w-full flex-1 p-2">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart
+                      data={trafficTrendData}
+                      margin={{ top: 5, right: 5, left: -15, bottom: 0 }}
+                      stackOffset="none"
+                    >
+                      <defs>
+                        {storageData.map((entry, index) => (
+                          <linearGradient
+                            key={`gradient-${index}`}
+                            id={`gradient-${entry.name}`}
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                          >
+                            <stop
+                              offset="5%"
+                              stopColor={entry.color}
+                              stopOpacity={0.8}
+                            />
+                            <stop
+                              offset="95%"
+                              stopColor={entry.color}
+                              stopOpacity={0.1}
+                            />
+                          </linearGradient>
+                        ))}
+                      </defs>
+                      <XAxis
+                        dataKey="name"
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fontSize: 10 }}
+                        dy={2}
+                      />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: 'hsl(var(--background))',
+                          borderColor: 'hsl(var(--border))',
+                          borderRadius: '6px',
+                          padding: '6px'
+                        }}
+                        itemStyle={{
+                          color: 'hsl(var(--foreground))',
+                          fontSize: '11px'
+                        }}
+                        labelStyle={{
+                          color: 'hsl(var(--foreground))',
+                          fontSize: '11px'
+                        }}
+                      />
+                      {storageData.map((entry, index) => (
+                        <Area
+                          key={entry.name}
+                          type="monotone"
+                          dataKey={entry.name}
+                          stackId="1"
+                          stroke={entry.color}
+                          fill={`url(#gradient-${entry.name})`}
+                          strokeWidth={1.5}
+                        />
+                      ))}
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="border-t p-2">
+                  <div className="flex flex-wrap gap-1.5 text-[10px] text-muted-foreground">
+                    {storageData.map((entry) => (
+                      <div key={entry.name} className="flex items-center gap-1">
+                        <div
+                          className="h-1.5 w-1.5 rounded-full"
+                          style={{ backgroundColor: entry.color }}
+                        />
+                        <span>{entry.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </ChartContainer>
       </CardContent>
     </Card>

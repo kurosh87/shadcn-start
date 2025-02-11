@@ -40,7 +40,7 @@ import {
   ChevronRight,
   ChevronsUpDown,
   CreditCard,
-  GalleryVerticalEnd,
+  Radio,
   LogOut
 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
@@ -54,8 +54,8 @@ import ThemeToggle from './ThemeToggle/theme-toggle';
 import { UserNav } from './user-nav';
 
 export const company = {
-  name: 'Acme Inc',
-  logo: GalleryVerticalEnd,
+  name: 'Radium',
+  logo: Radio,
   plan: 'Enterprise'
 };
 

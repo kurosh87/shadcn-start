@@ -33,12 +33,28 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  eslint: {
-    ignoreDuringBuilds: true
-  },
-  typescript: {
-    ignoreBuildErrors: true
-  }
+  // Development-specific settings
+  ...(process.env.NODE_ENV === 'development' && {
+    eslint: {
+      dirs: ['app', 'components', 'lib', 'types'] // Directories to lint
+    },
+    typescript: {
+      ignoreBuildErrors: false // Enforce type checking in development
+    },
+    devIndicators: {
+      buildActivity: true,
+      buildActivityPosition: 'bottom-right'
+    }
+  }),
+  // Production-specific settings
+  ...(process.env.NODE_ENV === 'production' && {
+    eslint: {
+      ignoreDuringBuilds: true
+    },
+    typescript: {
+      ignoreBuildErrors: true
+    }
+  })
 };
 
 module.exports = nextConfig;

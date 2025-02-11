@@ -19,39 +19,31 @@ import {
 } from '@/components/ui/chart';
 
 const chartData = [
-  { time: '00:00', gpu: 45, memory: 38 },
-  { time: '04:00', gpu: 52, memory: 45 },
-  { time: '08:00', gpu: 78, memory: 68 },
-  { time: '12:00', gpu: 85, memory: 72 },
-  { time: '16:00', gpu: 92, memory: 85 },
-  { time: '20:00', gpu: 68, memory: 62 }
+  { month: 'January', desktop: 186, mobile: 80 },
+  { month: 'February', desktop: 305, mobile: 200 },
+  { month: 'March', desktop: 237, mobile: 120 },
+  { month: 'April', desktop: 73, mobile: 190 },
+  { month: 'May', desktop: 209, mobile: 130 },
+  { month: 'June', desktop: 214, mobile: 140 }
 ];
 
-const chartConfig: ChartConfig = {
-  gpu: {
-    label: 'GPU Usage',
-    color: 'hsl(var(--chart-1))',
-    theme: {
-      backgroundColor: 'hsl(var(--chart-1))',
-      borderColor: 'hsl(var(--chart-1))'
-    }
+const chartConfig = {
+  desktop: {
+    label: 'Desktop',
+    color: 'hsl(var(--chart-1))'
   },
-  memory: {
-    label: 'Memory Usage',
-    color: 'hsl(var(--chart-2))',
-    theme: {
-      backgroundColor: 'hsl(var(--chart-2))',
-      borderColor: 'hsl(var(--chart-2))'
-    }
+  mobile: {
+    label: 'Mobile',
+    color: 'hsl(var(--chart-2))'
   }
-};
+} satisfies ChartConfig;
 
 export function AreaGraph() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Resource Utilization Trends</CardTitle>
-        <CardDescription>24-hour GPU and memory usage patterns</CardDescription>
+        <CardTitle>Project 1 Trends</CardTitle>
+        <CardDescription>Project trends over the last 6 months</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
@@ -68,30 +60,31 @@ export function AreaGraph() {
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="time"
+              dataKey="month"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dot" />}
             />
             <Area
-              dataKey="memory"
-              type="monotone"
-              fill={chartConfig.memory.theme?.backgroundColor}
-              fillOpacity={0.2}
-              stroke={chartConfig.memory.theme?.borderColor}
-              strokeWidth={2}
+              dataKey="mobile"
+              type="natural"
+              fill="var(--color-mobile)"
+              fillOpacity={0.4}
+              stroke="var(--color-mobile)"
+              stackId="a"
             />
             <Area
-              dataKey="gpu"
-              type="monotone"
-              fill={chartConfig.gpu.theme?.backgroundColor}
-              fillOpacity={0.2}
-              stroke={chartConfig.gpu.theme?.borderColor}
-              strokeWidth={2}
+              dataKey="desktop"
+              type="natural"
+              fill="var(--color-desktop)"
+              fillOpacity={0.4}
+              stroke="var(--color-desktop)"
+              stackId="a"
             />
           </AreaChart>
         </ChartContainer>
@@ -100,11 +93,10 @@ export function AreaGraph() {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Peak utilization at 16:00 (92% GPU, 85% Memory){' '}
-              <TrendingUp className="h-4 w-4" />
+              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Last 24 hours
+              January - June 2024
             </div>
           </div>
         </div>

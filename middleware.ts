@@ -7,10 +7,19 @@ import authConfig from './auth.config';
 
 const { auth } = NextAuth(authConfig);
 
+const productionUrl = 'https://radium.vercel.app';
+
 export default auth((req) => {
-  if (!req.auth) {
-    const url = req.url.replace(req.nextUrl.pathname, '/');
-    return Response.redirect(url);
+  const isLoggedIn = !!req.auth;
+  const { nextUrl } = req;
+  const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+
+  if (isOnDashboard && !isLoggedIn) {
+    const baseUrl =
+      process.env.NODE_ENV === 'production'
+        ? productionUrl
+        : `${nextUrl.protocol}//${nextUrl.host}`;
+    return Response.redirect(baseUrl);
   }
 });
 

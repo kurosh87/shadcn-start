@@ -1,4 +1,4 @@
-import { NavItem } from '@/types';
+import type { NavItem } from '@/types/index';
 
 export type User = {
   id: number;
@@ -123,55 +123,79 @@ export type Product = {
 
 export const navItems: NavItem[] = [
   {
-    title: 'Dashboard',
+    title: 'Home',
     url: '/dashboard/overview',
     icon: 'dashboard',
     isActive: false,
-    items: [] // Empty array as there are no child items for Dashboard
+    items: [] // Empty array as there are no child items for Home
   },
   {
-    title: 'Employee',
-    url: '/dashboard/employee',
+    title: 'Projects',
+    url: '#', // Placeholder as there is no direct link for the parent
+    icon: 'product',
+    isActive: true,
+    items: [
+      {
+        title: '3dEYE',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: '70B F-tune',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'GrubHub Project',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'Lightspeed_Demo',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'LLM_Inference',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'Nebula_Endpoint',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'Nebula_Inference',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      },
+      {
+        title: 'RadiumDeploy',
+        url: '/dashboard/project-1',
+        icon: 'product'
+      }
+    ]
+  },
+  {
+    title: 'Users',
+    url: '/dashboard/users',
     icon: 'user',
     isActive: false,
     items: [] // No child items
   },
   {
-    title: 'Product',
-    url: '/dashboard/product',
+    title: 'Storage',
+    url: '/dashboard/storage',
     icon: 'product',
     isActive: false,
     items: [] // No child items
   },
   {
-    title: 'Account',
-    url: '#', // Placeholder as there is no direct link for the parent
-    icon: 'billing',
-    isActive: true,
-
-    items: [
-      {
-        title: 'Profile',
-        url: '/dashboard/profile',
-        icon: 'userPen'
-      },
-      {
-        title: 'Login',
-        url: '/',
-        icon: 'login'
-      }
-    ]
-  },
-  {
-    title: 'Kanban',
-    url: '/dashboard/kanban',
-    icon: 'kanban',
+    title: 'Account Settings',
+    url: '/dashboard/settings',
+    icon: 'user2',
     isActive: false,
     items: [] // No child items
-  },
-  {
-    title: 'Explore',
-    url: '/dashboard/explore',
-    icon: 'map'
   }
 ];
